@@ -56,6 +56,8 @@ class ComputerPlayer extends Player
 {
 
 	private Intellect strategy;
+	private DUMB_INTELLECT = 0;
+	private NORMAL_INTELLECT = 1;
 
 	public ComputerPlayer()
 	{

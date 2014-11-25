@@ -4,9 +4,18 @@ public abstract class Player {
 	private int correctGuesses[];
 	
 	// Operations
-	public int[] checkMatches( int arr[] ) {return null;}
+	public int[] checkMatches( int arr[] ) {
+		int ret[4];
+		for( int i = 0; i < 4; ++i ) {
+			
+		}
+		return ret;
+	}
 	public int[] guess() {return null;}
-	public void setCode( int code[] ) {}
+	public void setCode( int code[] ) {
+		for( int i = 0; i < 4; ++i )
+			answer[i] = code[i];
+	}
 }
 
 class ComputerPlayer extends Player {
@@ -14,11 +23,13 @@ class ComputerPlayer extends Player {
 	private Intellect strategy;
 	
 	// Operations
-	public void setIntellect( Intellect strategy ) {}
-	public int[] guess() {return null;}
+	public void setIntellect( Intellect intellect ) {strategy = intellect;}
+	public int[] guess() {return strategy.guess();}
 }
 
 class HumanPlayer extends Player {
 	// Operations
-	public int[] getInput() {return null;}
+	public int[] getInput() {
+		return null;
+	}
 }

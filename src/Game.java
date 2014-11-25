@@ -1,4 +1,4 @@
-package mastermind;
+//package mastermind;
 
 import java.util.Scanner;
 
@@ -153,8 +153,8 @@ public class Game {
 			}
 			
 			while (replay == 1) {
-
-				humanCode = getCode(HumanPlayer);
+				//getCode is causing errors
+				//humanCode = getCode(humanPlayer);
 				
 				while (winner == 0) {
 					humanGuess = getGuess(humanPlayer);
@@ -176,50 +176,4 @@ public class Game {
 			}
 		}
 	}
-/*
-	public abstract class Player {
-		public int[] guess() {
-			return null;
-		}
-	}
-
-	public class HumanPlayer extends Player {
-		public int[] guess() {
-			return null;
-		}
-
-		public int[] getInput() {
-			return null;
-		}
-	}
-
-	public class ComputerPlayer extends Player {
-		public int[] guess() {
-			return null;
-		}
-
-	}
-
-	public interface LevelFactory {
-		int[] createLevel();
-	}
-
-	public class EasyLevelFactory implements LevelFactory {
-		public int[] createLevel() {
-			return null;
-		}
-	}
-
-	public class MediumLevelFactory implements LevelFactory {
-		public int[] createLevel() {
-			return null;
-		}
-	}
-
-	public class HardLevelFactory implements LevelFactory {
-		public int[] createLevel() {
-			return null;
-		}
-	}
-	*/
 }

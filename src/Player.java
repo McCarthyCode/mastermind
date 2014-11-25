@@ -8,7 +8,7 @@ public abstract class Player {
 
 	public abstract int[] guess();
 
-	public abstract void receiveMatches(int []);
+	public abstract void receiveMatches(int[] matches);
 	
 }
 
@@ -51,8 +51,8 @@ class ComputerPlayer extends Player
 {
 
 	private Intellect strategy;
-	public static DUMB_INTELLECT = 0;
-	public static NORMAL_INTELLECT = 1;
+	public static int DUMB_INTELLECT = 0;
+	public static int NORMAL_INTELLECT = 1;
 
 	
 	public ComputerPlayer(int intellectLevel)

@@ -33,8 +33,8 @@ class HumanPlayer extends Player
 		int[] guess = {a,b,c,d};
 		return guess;
 	}
-
-	public void setCode(int[] code)
+	
+	public void setCode()
 	{
 		Scanner input = new Scanner(System.in);
 		System.out.println("Enter 4 digits for initial code: ");
@@ -44,6 +44,11 @@ class HumanPlayer extends Player
 		this.answer[2] = input.nextInt();
 		this.answer[3] = input.nextInt();
 
+	}
+	
+	public void setCode(int[] code)
+	{
+		this.answer = code;
 	}
 }
 

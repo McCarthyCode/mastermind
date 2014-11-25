@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public abstract class Player {
 	protected int[] answer;
-	private int[] correctGuesses;
+	private int[] matches;
 
 	public Player () {}
-	public Player(int[] answer)	{this.answer = answer;}
 
 	public abstract int[] guess();
 
-	public abstract void setCode(int[] code);
+	public abstract void receiveMatches(int []);
+	
 }
 
 class HumanPlayer extends Player
@@ -18,12 +18,10 @@ class HumanPlayer extends Player
 	{
 		super();
 	}
-	public HumanPlayer(int[] answer)
-	{
-		super(answer);
-	}
+	
 	public int[] guess()
 	{
+		System.out.println("Enter your guess: ");
 		Scanner input = new Scanner(System.in);
 		int a,b,c,d;
 		a = input.nextInt();
@@ -33,51 +31,52 @@ class HumanPlayer extends Player
 		int[] guess = {a,b,c,d};
 		return guess;
 	}
-	
-	public void setCode()
+	public void recieveMatches(int[] matches)
 	{
-		Scanner input = new Scanner(System.in);
-		System.out.println("Enter 4 digits for initial code: ");
-
-		this.answer[0] = input.nextInt();
-		this.answer[1] = input.nextInt();
-		this.answer[2] = input.nextInt();
-		this.answer[3] = input.nextInt();
-
+		this.matches = matches;
+		int correctPosition = 0;
+		int incorrectPosition = 0;
+		for(int i = 0; i < 4; i++)
+		{
+			if(matches[i] == -1) incorrectPosition++;
+			if(matches[i] > -1) correctPosition++;
+		}
+		System.out.println("Number of correct guess in correct position: " + correctPosition);
+		System.out.println("Number of correct guess in incorrect position: " + incorrectPosition);
 	}
-	
-	public void setCode(int[] code)
-	{
-		this.answer = code;
-	}
+
 }
 
 class ComputerPlayer extends Player
 {
 
 	private Intellect strategy;
-	//private DUMB_INTELLECT = 0;
-	//private NORMAL_INTELLECT = 1;
+	public static DUMB_INTELLECT = 0;
+	public static NORMAL_INTELLECT = 1;
 
-	public ComputerPlayer()
+	
+	public ComputerPlayer(int intellectLevel)
 	{
 		super();
-	}
-	public ComputerPlayer(int[] answer, Intellect strategy)
-	{
-		super(answer);
-		this.strategy = strategy;
-	}
-
-	public void setIntellect(Intellect strategy)
-	{
-		this.strategy = strategy;
+		if(intellectLevel == DUMB_INTELLECT)
+		{
+			strategy = new Dumb();
+		}
+		else
+		{
+			strategy = new Normal();
+		}
 	}
 
-	public int[] guess()
+	public int[] guess(int[] matches)
 	{
-		return null;
+		return strategy.guess(matches);
 	}
 	
-	public void setCode(int[] code) {}
+	public void recieveMatches(int[] matches)
+	{
+		this.matches = matches;
+		
+	}
+
 }

@@ -5,7 +5,7 @@ public abstract class Player {
 	
 	// Operations
 	public int[] checkMatches( int arr[] ) {
-		int ret[4];
+		int[] ret = new int[4];
 		for( int i = 0; i < 4; ++i ) {
 			
 		}

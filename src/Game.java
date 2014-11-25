@@ -135,7 +135,7 @@ public class Game {
 
 	public void runGame() {
 		scan = new Scanner(System.in);
-		while (replay > 1) {
+		while (replay > 0) {
 			
 			getSettings();
 			
@@ -175,5 +175,10 @@ public class Game {
 
 			}
 		}
+	}
+	
+	public static void main( String args[] ) {
+		Game g = new Game();
+		g.runGame();
 	}
 }

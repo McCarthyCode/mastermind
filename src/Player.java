@@ -6,9 +6,15 @@ public abstract class Player {
 	protected int[] matches;
 
 	public Player () {}
-
+	/*
+	* Returns the 4 digit guess of the Player
+	*/
 	public abstract int[] guess();
-
+	
+	/*
+	* Sets this Player's matches[] to the one received by the param
+	* @param int[] matches : An array that indicates how a guess matched up with a Player's code.
+	*/
 	public abstract void receiveMatches(int[] matches);
 	
 }

@@ -20,7 +20,10 @@ class HumanPlayer extends Player
 	{
 		super();
 	}
-	
+	/*
+	* Human Player guesses by taking input from the stream. 
+	* The guess is stored in an int array. 
+	*/
 	public int[] guess()
 	{
 		System.out.println("Enter your guess (4 nonnegative digits, one per line):");
@@ -33,6 +36,9 @@ class HumanPlayer extends Player
 		int[] guess = {a,b,c,d};
 		return guess;
 	}
+	/*
+	* @param int[] matches 
+	*/
 	public void receiveMatches(int[] matches)
 	{
 		this.matches = matches;

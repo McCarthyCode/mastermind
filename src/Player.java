@@ -1,8 +1,10 @@
+//package mastermind;
+
 import java.util.Scanner;
 
 public abstract class Player {
 	protected int[] answer;
-	private int[] matches;
+	protected int[] matches;
 
 	public Player () {}
 
@@ -21,7 +23,7 @@ class HumanPlayer extends Player
 	
 	public int[] guess()
 	{
-		System.out.println("Enter your guess: ");
+		System.out.println("Enter your guess (4 nonnegative digits, one per line):");
 		Scanner input = new Scanner(System.in);
 		int a,b,c,d;
 		a = input.nextInt();
@@ -31,7 +33,7 @@ class HumanPlayer extends Player
 		int[] guess = {a,b,c,d};
 		return guess;
 	}
-	public void recieveMatches(int[] matches)
+	public void receiveMatches(int[] matches)
 	{
 		this.matches = matches;
 		int correctPosition = 0;
@@ -49,34 +51,29 @@ class HumanPlayer extends Player
 
 class ComputerPlayer extends Player
 {
-
 	private Intellect strategy;
 	public static int DUMB_INTELLECT = 0;
 	public static int NORMAL_INTELLECT = 1;
 
-	
 	public ComputerPlayer(int intellectLevel)
 	{
 		super();
-		if(intellectLevel == DUMB_INTELLECT)
-		{
+		if(intellectLevel == DUMB_INTELLECT)	{
 			strategy = new Dumb();
 		}
-		else
-		{
+		else {
 			strategy = new Normal();
 		}
 	}
 
-	public int[] guess(int[] matches)
-	{
+	public int[] guess(){
 		return strategy.guess(matches);
 	}
 	
-	public void recieveMatches(int[] matches)
-	{
+	public void receiveMatches(int[] matches){
 		this.matches = matches;
-		
 	}
+
+	
 
 }

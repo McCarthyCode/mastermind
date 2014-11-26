@@ -3,7 +3,6 @@
 import java.util.Scanner;
 
 public abstract class Player {
-	protected int[] answer;
 	protected int[] matches;
 
 	public Player () {}
@@ -16,7 +15,7 @@ public abstract class Player {
 
 class HumanPlayer extends Player
 {
-	public HumanPlayer() // default constructor
+	public HumanPlayer() // default constructor for HumanPlayer
 	{
 		super();
 	}
@@ -37,7 +36,10 @@ class HumanPlayer extends Player
 		return guess;
 	}
 	/*
-	* @param int[] matches 
+	*
+	* receiveMatches() counts how many numbers were guessed in the correct position and incorrect 
+	* and displays that information. 
+	* @param int[] matches : An array that indicates how a guess matched up with a Player's code.
 	*/
 	public void receiveMatches(int[] matches)
 	{
@@ -61,6 +63,10 @@ class ComputerPlayer extends Player
 	public static int DUMB_INTELLECT = 0;
 	public static int NORMAL_INTELLECT = 1;
 
+	/*
+	* When this constructor is called, intellectLevel determines how the
+	* ComputerPlayer should behave. 
+	*/
 	public ComputerPlayer(int intellectLevel)
 	{
 		super();
@@ -71,11 +77,20 @@ class ComputerPlayer extends Player
 			strategy = new Normal();
 		}
 	}
-
+	
+	/*
+	* @return Based on this Computer's strategy, a proper guess is returned for the Computer by calling
+	* guess of the Intellect class. matches[] is passed into the guess so the Computer can determine a smart 
+	* guess. 
+	*/
 	public int[] guess(){
 		return strategy.guess(matches);
 	}
 	
+	/*
+	* Sets this object's matches[] to the matches[] passed in
+	* @param int[] matches : An array that indicates how a guess matched up with a Player's code.
+	*/
 	public void receiveMatches(int[] matches){
 		this.matches = matches;
 	}

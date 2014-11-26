@@ -1,4 +1,4 @@
-//package mastermind;
+package Group1.Mastermind;
 
 import java.util.Scanner;
 
